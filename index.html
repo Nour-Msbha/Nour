@@ -13,7 +13,7 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-180.png">
 <style>
-:root { color-scheme: light dark; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+:root { color-scheme: light dark; --h: 100dvh; }
 body { margin: 0; font-size: 14px; }
 [hidden] { display: none !important; }
 </style>
@@ -78,19 +78,21 @@ body { margin: 0; font-size: 14px; }
 }
 
 * { box-sizing: border-box; }
-html, body { min-height: 100%; }
+html, body { margin: 0; }
+body { min-height: var(--h); }
 body {
   direction: rtl;
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-body);
-  padding-block: 12px;
+  padding-top: calc(12px + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
   -webkit-tap-highlight-color: transparent;
 }
 .app {
-  min-height: 0;
+  min-height: calc(var(--h) - 24px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
   max-width: 460px;
   margin-inline: auto;
   display: flex;
@@ -195,8 +197,7 @@ button.pill { font-family: inherit; background: transparent; cursor: pointer; }
 
 .stage {
   position: relative;
-  flex: 0 0 auto;
-  padding-block: 6px;
+  flex: 1;
   min-height: 0;
   width: 100%;
   display: flex;
@@ -679,6 +680,9 @@ header { flex-wrap: wrap; }
     save();
     render();
   });
+
+  function fitH() { document.documentElement.style.setProperty("--h", window.innerHeight + "px"); }
+  fitH(); window.addEventListener("resize", fitH); window.addEventListener("orientationchange", fitH);
 
   var MY_DUAS = [
     { t: "اللَّهُمَّ اغْفِرْ لِي خَطِيئَتِي وَجَهْلِي، وَإِسْرَافِي فِي أَمْرِي كُلِّهِ، وَمَا أَنْتَ أَعْلَمُ بِهِ مِنِّي، اللَّهُمَّ اغْفِرْ لِي خَطَايَايَ، وَعَمْدِي وَجَهْلِي وَهَزْلِي، وَكُلُّ ذَلِكَ عِنْدِي، اللَّهُمَّ اغْفِرْ لِي مَا قَدَّمْتُ وَمَا أَخَّرْتُ، وَمَا أَسْرَرْتُ وَمَا أَعْلَنْتُ، أَنْتَ الْمُقَدِّمُ وَأَنْتَ الْمُؤَخِّرُ، وَأَنْتَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.\n\nواخلف عليَّ كُل غائبة لي بخير.", s: "من دعاء النبي -صلى الله عليه وسلم-" },
