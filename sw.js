@@ -1,4 +1,4 @@
-var CACHE = "masbaha-friends-v5";
+var CACHE = "masbaha-fatima-v1";
 var SHELL = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png", "./icon-180.png"];
 
 self.addEventListener("install", function (e) {

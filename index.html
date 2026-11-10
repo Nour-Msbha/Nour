@@ -131,6 +131,7 @@ button.pill { font-family: inherit; background: transparent; cursor: pointer; }
 .duabtn { border-color: var(--accent); color: var(--accent); }
 .duabtn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 .top { position: relative; width: 100%; }
+.dedic { width: 100%; text-align: center; font-family: var(--font-display); font-size: 1.05rem; color: var(--gold, var(--accent)); margin-top: 10px; }
 .menu {
   position: absolute;
   top: calc(100% + 6px);
@@ -444,6 +445,7 @@ header { flex-wrap: wrap; }
         <div class="pill">الحسنات <b id="totalH">٠</b></div>
       </div>
     </header>
+    <div class="dedic">لِـ فَاطِمَة عَفَا اللهُ عَنْهَا وَعَنْ وَالِدَيْهَا</div>
     <div class="menu" id="zMenu" hidden role="region" aria-label="أذكار"></div>
     <div class="menu" id="duaMenu" hidden role="region" aria-label="أدعية"></div>
   </div>
@@ -498,7 +500,7 @@ header { flex-wrap: wrap; }
   var DHIKR = ["سبحان الله", "الحمد لله", "الله أكبر", "لا إله إلا الله", "أستغفر الله", "اللهم صلِّ على محمد"];
   var SIZES = [33, 100, 1000];
   var HASANA = 10;
-  var KEY = "masbaha-v2";
+  var KEY = "masbaha-fatima-v1";
 
   var DUAS = [
     { q: 1, t: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ", s: "سورة البقرة ٢٠١" },
